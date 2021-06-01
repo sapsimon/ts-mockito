@@ -1,5 +1,5 @@
 {
-  "name": "ts-mockito",
+  "name": "@cspotcode/ts-mockito",
   "version": "2.6.0",
   "description": "Mocking library for TypeScript",
   "main": "lib/ts-mockito.js",
@@ -17,10 +17,13 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'"
   },
   "author": "kuster.maciej@gmail.com",
+  "contributors": [
+    "Andrew Bradley <cspotcode@gmail.com>"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NagRock/ts-mockito"
+    "url": "https://github.com/cspotcode/ts-mockito"
   },
   "keywords": [
     "mock",
@@ -44,15 +47,15 @@
     "karma-jasmine": "^1.1.0",
     "karma-mocha-reporter": "^2.2.5",
     "karma-phantomjs-launcher": "^1.0.4",
-    "karma-typescript": "^3.0.8",
-    "karma-typescript-preprocessor": "^0.3.1",
+    "karma-typescript": "^5.5.1",
+    "karma-typescript-preprocessor": "^0.4.0",
     "phantomjs-prebuilt": "^2.1.16",
     "puppeteer": "^0.12.0",
     "rimraf": "^3.0.0",
     "ts-helpers": "^1.1.2",
     "ts-jest": "^23.0.1",
     "tslint": "^5.7.0",
-    "typescript": "^2.7.2"
+    "typescript": "4.3.2"
   },
   "dependencies": {
     "lodash": "^4.17.5"
