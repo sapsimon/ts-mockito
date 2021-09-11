@@ -174,17 +174,15 @@ abstract class SampleAbstractClass {
     public get sampleString(): string {
         return "sampleString";
     }
-
-    public sampleMethod(): number {
-        return 4;
-    }
-
     public get twoPlusTwo(): number {
         return this.dependency.sumTwoNumbers(2, 2);
     }
 
     public set twoPlusTwo(value: number) {
         this.dependency.sumTwoNumbers(value, 0);
+    }
+    public sampleMethod(): number {
+        return 4;
     }
 }
 
@@ -214,17 +212,15 @@ class SampleGeneric<T> {
     public get sampleString(): string {
         return "sampleString";
     }
-
-    public sampleMethod(): number {
-        return 4;
-    }
-
     public get twoPlusTwo(): number {
         return this.dependency.sumTwoNumbers(2, 2);
     }
 
     public set twoPlusTwo(value: number) {
         this.dependency.sumTwoNumbers(value, 0);
+    }
+    public sampleMethod(): number {
+        return 4;
     }
 
     public getGenericTypedValue(): T {
