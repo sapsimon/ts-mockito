@@ -278,9 +278,6 @@ class SampleGeneric<T> {
     public set twoPlusTwo(value: number) {
         this.dependency.sumTwoNumbers(value, 0);
     }
-    public sampleMethod(): number {
-        return 4;
-    }
 
     public get sampleString(): string {
         return "sampleString";
