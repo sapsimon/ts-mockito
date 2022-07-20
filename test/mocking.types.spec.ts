@@ -234,6 +234,7 @@ abstract class SampleAbstractClass {
     public get sampleString(): string {
         return "sampleString";
     }
+
     public get twoPlusTwo(): number {
         return this.dependency.sumTwoNumbers(2, 2);
     }
@@ -241,6 +242,7 @@ abstract class SampleAbstractClass {
     public set twoPlusTwo(value: number) {
         this.dependency.sumTwoNumbers(value, 0);
     }
+
     public sampleMethod(): number {
         return 4;
     }
@@ -269,9 +271,6 @@ class SampleInterfaceImplementation implements SampleInterface {
 class SampleGeneric<T> {
     public dependency: Bar;
 
-    public get sampleString(): string {
-        return "sampleString";
-    }
     public get twoPlusTwo(): number {
         return this.dependency.sumTwoNumbers(2, 2);
     }
@@ -279,6 +278,11 @@ class SampleGeneric<T> {
     public set twoPlusTwo(value: number) {
         this.dependency.sumTwoNumbers(value, 0);
     }
+
+    public get sampleString(): string {
+        return "sampleString";
+    }
+
     public sampleMethod(): number {
         return 4;
     }

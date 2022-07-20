@@ -65,6 +65,7 @@ class FooWithGetterAndSetter extends SampleAbstractClass {
     constructor(private dependency: Bar) {
         super();
     }
+
     public get twoPlusTwo(): number {
         return this.dependency.sumTwoNumbers(2, 2);
     }
