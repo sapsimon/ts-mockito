@@ -1,4 +1,4 @@
-This is a fork of [`ts-mockito`](https://github.com/NagRock/ts-mockito/), published separately as `@cspotcode/ts-mockito`
+This is a fork of [`ts-mockito`](https://github.com/NagRock/ts-mockito/), published separately as `@ts-mockito/ts-mockito`
 
 TODO consider publishing as `@TypeStrong/ts-mockito`?  Is a more neutral name
 
