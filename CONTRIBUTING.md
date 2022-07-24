@@ -1,6 +1,4 @@
-This is a fork of [`ts-mockito`](https://github.com/NagRock/ts-mockito/), published separately as `@ts-mockito/ts-mockito`
-
-TODO consider publishing as `@TypeStrong/ts-mockito`?  Is a more neutral name
+This is a fork of [`ts-mockito`](https://github.com/NagRock/ts-mockito/), published separately as `@typestrong/ts-mockito`
 
 We hope to eventually merge back with upstream `ts-mockito` and publish to the `ts-mockito` npm name, but until then, a fork lets us add new features.
 

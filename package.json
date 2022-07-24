@@ -1,5 +1,5 @@
 {
-  "name": "@ts-mockito/ts-mockito",
+  "name": "@typestrong/ts-mockito",
   "version": "2.6.0",
   "description": "Mocking library for TypeScript",
   "main": "lib/ts-mockito.js",
