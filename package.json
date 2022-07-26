@@ -57,8 +57,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
-    "rxjs": "^7.1.0"
+    "lodash": "^4.17.5"
   },
   "resolutions": {
     "write-file-atomic": "2.4.1"
