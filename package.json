@@ -1,5 +1,5 @@
 {
-  "name": "@cspotcode/ts-mockito",
+  "name": "@typestrong/ts-mockito",
   "version": "2.6.0",
   "description": "Mocking library for TypeScript",
   "main": "lib/ts-mockito.js",
@@ -18,7 +18,8 @@
   },
   "author": "kuster.maciej@gmail.com",
   "contributors": [
-    "Andrew Bradley <cspotcode@gmail.com>"
+    "Andrew Bradley <cspotcode@gmail.com>",
+    "Liron Hazan"
   ],
   "license": "MIT",
   "repository": {
