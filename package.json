@@ -1,6 +1,6 @@
 {
   "name": "@typestrong/ts-mockito",
-  "version": "2.6.0",
+  "version": "2.6.3",
   "description": "Mocking library for TypeScript",
   "main": "lib/ts-mockito.js",
   "typings": "lib/ts-mockito",
@@ -14,7 +14,13 @@
     "test:karma": "./node_modules/.bin/karma start karma.conf.js --single-run",
     "test:karma:watch": "./node_modules/.bin/karma start karma.conf.js",
     "test:compile-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'"
+    "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
+    "cp:readme": "cp -rf README.md lib/",
+    "cp:license": "cp -rf LICENSE lib/",
+    "cp:pkjson": "cp -rf package.json lib/",
+    "cp:all": "npm run cp:readme && npm run cp:license && npm run cp:pkjson",
+    "build": "npm run bump && npm run compile && npm run cp:all",
+    "bump": "npm version patch --force"
   },
   "author": "kuster.maciej@gmail.com",
   "contributors": [
