@@ -55,7 +55,7 @@
     "karma-mocha-reporter": "^2.2.5",
     "karma-typescript": "^5.5.3",
     "karma-typescript-preprocessor": "^0.4.0",
-    "puppeteer": "^10.1.0",
+    "puppeteer": "^15.5.0",
     "rimraf": "^3.0.2",
     "ts-helpers": "^1.1.2",
     "ts-jest": "^27.0.3",
