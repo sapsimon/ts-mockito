@@ -9,6 +9,16 @@ export class MethodCallToStringConverter {
     }
 
     public convertActualCalls(calls: MethodAction[]): string[] {
-        return calls.map(call => `${call.methodName}(${call.args.map(arg => arg.toString()).join(", ")})`);
+        return calls.map(call => {
+            const methodName = call.methodName;
+            const args = call.args.map(arg => {
+                if (arg.hasOwnProperty('toString')) {
+                    return arg.toString();
+                } else {
+                    return JSON.stringify(arg);
+                }
+            });
+            return `${methodName}(${args.join(', ')})`;
+        });
     }
 }

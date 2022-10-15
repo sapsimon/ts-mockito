@@ -46,4 +46,8 @@ export class Foo {
     public async sampleMethodReturningVoidPromiseWithoutParams(): Promise<void> {
         return Promise.resolve();
     }
+
+    public async sampleMethodWithObjectArguments(obj: object): Promise<void> {
+        return;
+    }
 }
