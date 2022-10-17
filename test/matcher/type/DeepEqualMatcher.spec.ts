@@ -1,6 +1,6 @@
-import { DeepEqualMatcher } from '../../../src/matcher/type/DeepEqualMatcher';
-import { Matcher } from '../../../src/matcher/type/Matcher';
-import { anyString, deepEqual, instance, mock, verify } from '../../../src/ts-mockito';
+import {DeepEqualMatcher} from "../../../src/matcher/type/DeepEqualMatcher";
+import {Matcher} from "../../../src/matcher/type/Matcher";
+import {anyString, deepEqual, instance, mock, verify} from "../../../src/ts-mockito";
 
 describe("DeepEqualMatcher", () => {
     describe("checking if two different instances of same number matches", () => {
