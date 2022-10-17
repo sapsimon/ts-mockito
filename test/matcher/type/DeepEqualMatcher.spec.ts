@@ -1,6 +1,6 @@
-import {DeepEqualMatcher} from "../../../src/matcher/type/DeepEqualMatcher";
-import {Matcher} from "../../../src/matcher/type/Matcher";
-import {anyString, deepEqual, instance, mock, verify} from "../../../src/ts-mockito";
+import { DeepEqualMatcher } from '../../../src/matcher/type/DeepEqualMatcher';
+import { Matcher } from '../../../src/matcher/type/Matcher';
+import { anyString, deepEqual, instance, mock, verify } from '../../../src/ts-mockito';
 
 describe("DeepEqualMatcher", () => {
     describe("checking if two different instances of same number matches", () => {
@@ -93,14 +93,51 @@ describe("DeepEqualMatcher", () => {
 });
 
 describe("deepEqual", () => {
-  describe("using in verify statements", () => {
-      it("can be used for equality", () => {
-        class Foo {
-          public add = (str: string, num: number, obj: {a: string}): number => null;
-        }
-        const foo = mock(Foo);
-        instance(foo).add("1", 2, {a: "sampleValue"});
-        verify(foo.add(deepEqual("1"), deepEqual(2), deepEqual({a: "sampleValue"}))).once();
-      });
-  });
+    describe("using in verify statements", () => {
+        it("can be used for equality", () => {
+            class Foo {
+                public add = (str: string, num: number, obj: {a: string}): number => null;
+            }
+            const foo = mock(Foo);
+            instance(foo).add("1", 2, {a: "sampleValue"});
+            verify(foo.add(deepEqual("1"), deepEqual(2), deepEqual({a: "sampleValue"}))).once();
+        });
+
+        describe('when given circular dependency', () => {
+          type Bar = { bar?: Bar; };
+          class Foo {
+            public something = (bar: Bar): number => null;
+          }
+          it('should verify successfully', async () => {
+
+
+              const bar: Bar = {};
+              bar.bar = {bar};
+
+              const foo = mock(Foo);
+              instance(foo).something(bar);
+              verify(foo.something(deepEqual(bar))).once();
+          });
+
+          it('should reject gracefully', async () => {
+              const bar: Bar = {};
+              bar.bar = {bar};
+
+              const foo = mock(Foo);
+              instance(foo).something(bar);
+
+            try {
+              // when
+              verify(foo.something(deepEqual({}))).once();
+
+              expect(true).toBe(false); // Above call should throw an exception
+            } catch (e) {
+              // then
+              expect(e.message).toContain('Expected "something(deepEqual({\"foo\":\"bar\"}))" to be called 1 time(s). But has been called 0 time(s).\n');
+              expect(e.message).toContain("Actual calls:\n");
+              expect(e.message).toContain(`something({\"foo\":\"baz\"})`);
+            }
+          });
+        });
+    });
 });
