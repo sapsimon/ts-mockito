@@ -90,6 +90,38 @@ describe("DeepEqualMatcher", () => {
             expect(result).toBeFalsy();
         });
     });
+    describe('when given circular dependency', () => {
+        type Bar = { bar?: Bar; };
+
+        it('should verify successfully', async () => {
+            // given
+            const firstValue: Bar = {};
+            firstValue.bar = {bar: firstValue};
+            const testObj: Matcher = new DeepEqualMatcher(firstValue);
+
+            // when
+            const secondValue: Bar = {};
+            secondValue.bar = {bar: secondValue};
+            const result = testObj.match(secondValue);
+
+            // then
+            expect(result).toBeTruthy();
+        });
+
+        it('should reject gracefully', async () => {
+            // given
+            const firstValue: Bar = {};
+            firstValue.bar = {bar: firstValue};
+            const testObj: Matcher = new DeepEqualMatcher(firstValue);
+
+            // when
+            const secondValue: Bar = {};
+            const result = testObj.match(secondValue);
+
+            // then
+            expect(result).toBeFalsy();
+        });
+    });
 });
 
 describe("deepEqual", () => {
@@ -108,16 +140,6 @@ describe("deepEqual", () => {
           class Foo {
             public something = (bar: Bar): number => null;
           }
-          it('should verify successfully', async () => {
-
-
-              const bar: Bar = {};
-              bar.bar = {bar};
-
-              const foo = mock(Foo);
-              instance(foo).something(bar);
-              verify(foo.something(deepEqual(bar))).once();
-          });
 
           it('should reject gracefully', async () => {
               const bar: Bar = {};
@@ -128,14 +150,14 @@ describe("deepEqual", () => {
 
             try {
               // when
-              verify(foo.something(deepEqual({}))).once();
 
+              verify(foo.something(deepEqual({}))).once();
               expect(true).toBe(false); // Above call should throw an exception
             } catch (e) {
               // then
-              expect(e.message).toContain('Expected "something(deepEqual({\"foo\":\"bar\"}))" to be called 1 time(s). But has been called 0 time(s).\n');
+              expect(e.message).toContain('Expected "something(deepEqual({}))" to be called 1 time(s). But has been called 0 time(s).\n');
               expect(e.message).toContain("Actual calls:\n");
-              expect(e.message).toContain(`something({\"foo\":\"baz\"})`);
+              expect(e.message).toContain("something({\"bar\":{\"bar\":\"[Circular]\"}}");
             }
           });
         });

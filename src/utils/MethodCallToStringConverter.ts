@@ -1,6 +1,7 @@
 import {Matcher} from "../matcher/type/Matcher";
 import {MethodAction} from "../MethodAction";
 import {MethodToStub} from "../MethodToStub";
+import * as safeJsonStringify from 'safe-json-stringify';
 
 export class MethodCallToStringConverter {
     public convert(method: MethodToStub): string {
@@ -15,7 +16,7 @@ export class MethodCallToStringConverter {
                 if (arg.hasOwnProperty('toString')) {
                     return arg.toString();
                 } else {
-                    return JSON.stringify(arg);
+                    return safeJsonStringify(arg);
                 }
             });
             return `${methodName}(${args.join(', ')})`;
