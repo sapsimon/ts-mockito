@@ -13,7 +13,7 @@ export class MethodCallToStringConverter {
         return calls.map(call => {
             const methodName = call.methodName;
             const args = call.args.map(arg => {
-                if (arg.hasOwnProperty('toString')) {
+                if (typeof arg !== 'object' || arg.hasOwnProperty('toString')) {
                     return arg.toString();
                 } else {
                     return safeJsonStringify(arg);
