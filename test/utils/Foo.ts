@@ -48,6 +48,6 @@ export class Foo {
     }
 
     public async sampleMethodWithObjectArguments(obj: object): Promise<void> {
-        return;
+        return Promise.resolve();
     }
 }

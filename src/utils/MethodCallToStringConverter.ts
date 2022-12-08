@@ -12,14 +12,12 @@ export class MethodCallToStringConverter {
     public convertActualCalls(calls: MethodAction[]): string[] {
         return calls.map(call => {
             const methodName = call.methodName;
-            const args = call.args.map(arg => {
-                if (typeof arg !== 'object' || arg.hasOwnProperty('toString')) {
-                    return arg.toString();
-                } else {
-                    return safeJsonStringify(arg);
-                }
-            });
+            const args = call.args.map(arg => this.objectIsStringable(arg) ? arg.toString() : safeJsonStringify(arg));
             return `${methodName}(${args.join(', ')})`;
         });
+    }
+
+    private objectIsStringable(arg) {
+        return typeof arg !== 'object' || arg.hasOwnProperty('toString');
     }
 }
