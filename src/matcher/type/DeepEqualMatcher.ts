@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import {Matcher} from "./Matcher";
-
+import * as safeJsonStringify from "safe-json-stringify";
 export class DeepEqualMatcher<T> extends Matcher {
     constructor(private expectedValue: T) {
         super();
@@ -21,7 +21,7 @@ export class DeepEqualMatcher<T> extends Matcher {
         if (this.expectedValue instanceof Array) {
             return `deepEqual([${this.expectedValue}])`;
         } else {
-            return `deepEqual(${this.expectedValue})`;
+            return `deepEqual(${safeJsonStringify(this.expectedValue as unknown as object)})`;
         }
     }
 }

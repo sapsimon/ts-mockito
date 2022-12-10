@@ -1,4 +1,4 @@
-import {instance, mock, verify} from "../src/ts-mockito";
+import {instance, mock, verify, deepEqual} from "../src/ts-mockito";
 import {MethodCallToStringConverter} from "../src/utils/MethodCallToStringConverter";
 import {Bar} from "./utils/Bar";
 import {Foo} from "./utils/Foo";
@@ -799,6 +799,22 @@ cases.forEach(testData => {
                     expect(e.message).toContain("Expected \"getStringById(strictEqual(1))\" to be called 1 time(s). But has been called 0 time(s).\n");
                     expect(e.message).toContain("Actual calls:\n");
                     expect(e.message).toContain("getStringById(2)");
+                }
+            });
+
+            it("should describe expected method call objects", () => {
+                instance(mockedFoo).sampleMethodWithObjectArguments({foo: 'baz'});
+
+                try {
+                    // when
+                    verify(mockedFoo.sampleMethodWithObjectArguments(deepEqual({foo: 'bar'}))).once();
+
+                    expect(true).toBe(false); // Above call should throw an exception
+                } catch (e) {
+                    // then
+                    expect(e.message).toContain('Expected "sampleMethodWithObjectArguments(deepEqual({\"foo\":\"bar\"}))" to be called 1 time(s). But has been called 0 time(s).\n');
+                    expect(e.message).toContain("Actual calls:\n");
+                    expect(e.message).toContain(`sampleMethodWithObjectArguments({\"foo\":\"baz\"})`);
                 }
             });
         });
