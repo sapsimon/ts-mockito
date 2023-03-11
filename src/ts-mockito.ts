@@ -121,7 +121,7 @@ export function match(expectedValue: RegExp | string): any {
     return new MatchingStringMatcher(expectedValue) as any;
 }
 
-export function objectContaining(expectedValue: Object): any {
+export function objectContaining<T extends Object>(expectedValue: T): any {
     return new ObjectContainingMatcher(expectedValue) as any;
 }
 
