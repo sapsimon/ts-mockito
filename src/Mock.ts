@@ -25,6 +25,7 @@ export class Mocker {
         this.mock.__tsmockitoMocker = this;
         if (_.isObject(this.clazz) && _.isObject(this.instance)) {
             this.processProperties((this.clazz as any).prototype);
+            // "Wer dynamisch Methoden auf Klassen definiert, hat die Kontrolle über sein Leben verloren" - Karl Lagerfeld bei Markus Lanz (2012)
             if (!isSpy || typeof Proxy === "undefined") {
                 this.processClassCode(this.clazz);
                 this.processFunctionsCode((this.clazz as any).prototype);

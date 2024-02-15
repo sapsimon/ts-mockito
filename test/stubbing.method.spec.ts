@@ -348,6 +348,13 @@ describe("mocking", () => {
                 expect(result).toEqual(expectedResult);
             });
         });
+
+        describe("that was found in the called function code", () => {
+            it("is not present", () => {
+                // then
+                expect(foo['then']).toBeUndefined();
+            });
+        });
     });
 
     describe("calling method", () => {

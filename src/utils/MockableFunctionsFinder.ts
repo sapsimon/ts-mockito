@@ -11,7 +11,7 @@
 export class MockableFunctionsFinder {
     private functionNameRegex = /[.\s]([^.\s]+?)(?:\(|\s+=\s+(?:function\s*(?:[^.\s]+?\s*)?)?\()/g;
     private cleanFunctionNameRegex = /^[.\s]([^.\s]+?)[\s(]/;
-    private excludedFunctionNames: string[] = ["hasOwnProperty", "function"];
+    private excludedFunctionNames: string[] = ["hasOwnProperty", "function", "then"];
 
     public find(code: string): string[] {
         return (code.match(this.functionNameRegex) || [])

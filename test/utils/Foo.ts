@@ -1,13 +1,21 @@
+function then() {
+    // Nothing
+}
+
 export class Foo {
     public dynamicMethod: Function;
     public dynamicMethodInFunction: Function;
 
     constructor() {
-        this.dynamicMethod = () => "dynamicMethod";
+        this.dynamicMethod =  () => {
+            then();
+        };
     }
 
     public getBar(): string {
-        this.dynamicMethodInFunction = () => "dynamicMethodInFunction";
+        this.dynamicMethodInFunction = () => {
+            then();
+        };
         return "bar";
     }
 
